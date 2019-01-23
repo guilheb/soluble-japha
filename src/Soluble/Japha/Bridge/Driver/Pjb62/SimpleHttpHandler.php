@@ -257,7 +257,7 @@ class SimpleHttpHandler extends SocketHandler
         $peer = stream_socket_client($address, $errno, $errstr, 20, STREAM_CLIENT_PERSISTENT, $context);
         */
 
-        $peer = pfsockopen($this->host, $channelName, $errno, $errstr, 20);
+        $peer = fsockopen($this->host, $channelName, $errno, $errstr, 20);
         if (!$peer) {
             throw new Exception\IllegalStateException("No ContextServer for {$this->host}:{$channelName}. Error: $errstr ($errno)\n");
         }
